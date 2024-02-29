@@ -180,120 +180,35 @@
 </div>
 
 <script>
-function generateSchedule(participants, groupName, startingBoard, switchColors) {
-    var numPlayers = participants.length;
-    var numRounds = numPlayers-1; // Each player plays against every other player once
-    var scheduleHtml = '';
-    var players = participants.slice();
-
-    // Ensure even number of players for scheduling
-    if (numPlayers % 2 === 1) {
-        players.push('Player ' + (numPlayers + 1) + ' Bye');
-        numPlayers++;
-    }
-
-    // Generate schedule for each round
-    for (var round = 1; round <= numRounds; round++) {
-        scheduleHtml += '<div class="round">';
-        scheduleHtml += '<h2>Round ' + round + ' - ' + groupName + '</h2>';
-        scheduleHtml += '<ul>';
-
-        // Generate pairings for each round
-        for (var i = 0; i < numPlayers / 2; i++) {
-            var player1Index = i;
-            var player2Index = (round + i) % (numPlayers - 1); // Rotating player index
-
-            if (player2Index === 0) {
-                player2Index = numPlayers - 1;
-            }
-
-            var player1 = players[player1Index];
-            var player2 = players[player2Index];
-            var whitePlayer, blackPlayer;
-            var boardNumber = startingBoard + i;
-
-            // Alternate colors for each pairing
-            if (switchColors && round % 2 === 0) {
-                whitePlayer = player2;
-                blackPlayer = player1;
-            } else {
-                whitePlayer = player1;
-                blackPlayer = player2;
-            }
-
-            // Display pairings
-            if (whitePlayer.includes('Bye')) {
-                scheduleHtml += '<li>' + blackPlayer + ' (Black) Bye (Board ' + boardNumber + ')' + '</li>';
-            } else if (blackPlayer.includes('Bye')) {
-                scheduleHtml += '<li>' + whitePlayer + ' (White) Bye (Board ' + boardNumber + ')' + '</li>';
-            } else {
-                scheduleHtml += '<li>' + whitePlayer + ' (White) vs ' + blackPlayer + ' (Black) (Board ' + boardNumber + ')' + '</li>';
-            }
-        }
-
-        scheduleHtml += '</ul>';
-        scheduleHtml += '</div>';
-    }
-
-    return scheduleHtml;
-}
-
-
-
-
-    function splitParticipants(participants, groupSize) {
-        var groups = [];
-        var i, j, tempArray;
-        for (i = 0, j = participants.length; i < j; i += groupSize) {
-            tempArray = participants.slice(i, i + groupSize);
-            groups.push(tempArray);
-        }
-        return groups;
-    }
-
     function generateGroupedSchedule(participants) {
-        var numPlayersPerGroup = parseInt(document.getElementById('sliderGroupSize').value);
-        var groups = splitParticipants(participants, numPlayersPerGroup);
-        var scheduleHtml = '';
-        var boardCounter = 1;
+        var playerCount = participants.length;
+        var pairings = [];
+        var round = 1;
 
-        for (var i = 0; i < groups.length; i++) {
-            var group = groups[i];
-            var groupName = 'Group ' + (i + 1);
-            scheduleHtml += '<div class="group">';
-            scheduleHtml += generateSchedule(group, groupName, boardCounter, false);
-            scheduleHtml += '</div>';
-            // Increment the board counter for the next group
-            boardCounter += numPlayersPerGroup / 2;
+        // Generate pairings
+        for (var i = 0; i < playerCount; i++) {
+            for (var j = i + 1; j < playerCount; j++) {
+                pairings.push({
+                    round: round,
+                    board: (i % (playerCount - 1)) + 1,
+                    pairing: participants[i] + " vs " + participants[j]
+                });
+                round++;
+            }
         }
 
-        document.getElementById('tournamentSchedule').innerHTML = scheduleHtml;
-        document.getElementById('activePlayerCount').textContent = participants.length;
-        document.getElementById('groupSizeIndicator').textContent = numPlayersPerGroup;
-
-        // Hide the Round Robin schedule
-        document.getElementById('roundRobinSchedule').classList.add('d-none');
+        // Display pairings
+        var scheduleContainer = document.getElementById("tournamentSchedule");
+        scheduleContainer.innerHTML = ""; // Clear previous content
+        pairings.forEach(function (pairing) {
+            var pairingText = "Round " + pairing.round + " Board " + pairing.board + " Pairing " + pairing.pairing;
+            var listItem = document.createElement("div");
+            listItem.textContent = pairingText;
+            scheduleContainer.appendChild(listItem);
+        });
     }
 
-    function toggleDoubleRoundRobin() {
-        var checkbox = document.getElementById('roundRobinToggle');
-        var roundRobinSchedule = document.getElementById('roundRobinSchedule');
-
-        if (checkbox.checked) {
-            // Show the Double Round Robin schedule
-            roundRobinSchedule.innerHTML = document.getElementById('tournamentSchedule').innerHTML;
-            // Generate Double Round Robin schedule with switched colors
-            roundRobinSchedule.innerHTML = roundRobinSchedule.innerHTML.replace(/(Black)/g, 'temp');
-            roundRobinSchedule.innerHTML = roundRobinSchedule.innerHTML.replace(/(White)/g, 'Black');
-            roundRobinSchedule.innerHTML = roundRobinSchedule.innerHTML.replace(/(temp)/g, 'White');
-            roundRobinSchedule.classList.remove('d-none');
-        } else {
-            // Hide the Double Round Robin schedule
-            roundRobinSchedule.classList.add('d-none');
-        }
-    }
-
-    var participants = ['Player 1', 'Player 2', 'Player 3', 'Player 4', 'Player 5', 'Player 6', 'Player 7', 'Player 8', 'Player 9', 'Player 10', 'Player 11','Player 12'];
+    var participants = ['Player 1', 'Player 2', 'Player 3', 'Player 4', 'Player 5', 'Player 6', 'Player 7', 'Player 8'];
     generateGroupedSchedule(participants);
 </script>
 
