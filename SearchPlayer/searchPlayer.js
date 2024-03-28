@@ -25,14 +25,15 @@ function printPlayerDetails() {
                     columns.forEach(column => {
                         output += column + "<br>";
                     });
-                    console.log(columns[0] + " " + columns[1] + " " + columns[2] + " " + columns[3] + " " + columns[4] + " " + columns[5] + " " + columns[6] + " " + columns[7] + " " + columns[8]);
+                    console.log(columns[0] + " " + columns[1] + " " + columns[2] + " " + columns[3] + " " + columns[4] + " " + columns[5] + " " + columns[6] + " " + columns[7] + " " + columns[8] + " " + columns[9] + " " + columns[10] + " " + columns[11]);
                     var id = columns[0];
                     var name = columns[1];
                     var partsOfStr = name.split(',');
                     lname = partsOfStr[0];
                     fname = partsOfStr[1];
-                    var rating = columns[7];
-                    addPlayer(id, fname, lname, rating);
+                    var rapidRating = columns[7];
+                    var quickRating = columns[10];
+                    addPlayer(id, fname, lname, rapidRating, quickRating);
                     document.getElementById('playerDetailsOutput').innerHTML = output;
                     return; // Exit the loop if a match is found
                 }
@@ -77,20 +78,26 @@ function displayFirstTenElements() {
         });
 }
 
-function addPlayer(id, fname, lname, rating) {
+function addPlayer(id, fname, lname, rapidRating, quickRating) {
     // Create a JSON object to hold the data
-    if(rating == "" || rating == "U") {
-        rating = '9999';
+    if(rapidRating == "" || rapidRating == "U") {
+        rapidRating = '9999';
+    }
+
+    if(quickRating == "" || quickRating == "U") {
+        quickRating = '9999';
     }
 
     var results = {
         "id": id,
         "fname": fname,
         "lname": lname,
-        "rating": rating
+        "rapidRating": rapidRating,
+        "quickRating": quickRating,
+        "section": "",
+        "matchInfo": [],
+        "scoreReport": []
     };
-
-    console.log(results);
 
     fetch('http://localhost:3000/searchPlayer', {
     method: 'POST',
