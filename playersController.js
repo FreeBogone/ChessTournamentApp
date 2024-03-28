@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 let players = [];
 // let samplePlayers = [
 //     {
@@ -91,6 +92,30 @@ let players = [];
 //         scoreReport: []
 //     }
 // ];
+=======
+let players = [
+    {
+        id: 10000001,
+        fname: "John",
+        lname: "Doe",
+        quickRating: 1800,
+        rapidRating: 1000,
+        section: '',
+        matchInfo: [],
+        scoreReport: []
+    },
+    {
+        id: 10000002,
+        fname: "Jane",
+        lname: "Smith",
+        quickRating: 9999,
+        rapidRating: 9999,
+        section: '1',
+        matchInfo: [],
+        scoreReport: []
+    }
+];
+>>>>>>> main
 
 function receivePlayerData(playerData) {
     // Validate player data
@@ -110,9 +135,9 @@ function sendPlayerData() {
     return players;
 }
 
-function sendSamplePlayerData() {
-    return samplePlayers;
-}
+//function sendSamplePlayerData() {
+//    return samplePlayers;
+//}
 
 // Function to update player section
 function updatePlayerSection(playerId, newSection) {
@@ -141,7 +166,7 @@ function updatePlayerScoreReport(playerID, newSecoreReport) {
 
 module.exports = {
     receivePlayerData,
-    sendSamplePlayerData,
+    //sendSamplePlayerData,
     sendPlayerData,
     updatePlayerSection,
     updatePlayerScoreReport
