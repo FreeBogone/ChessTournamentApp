@@ -1,125 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="" />
-    <meta
-      name="author"
-      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
-    />
-    <meta name="generator" content="Hugo 0.84.0" />
-    <title>Chess Tournament</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grandmaster Software</title>
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/index.css" rel="stylesheet">
+    
+</head>
+<body>
 
-    <link
-      rel="canonical"
-      href="https://getbootstrap.com/docs/5.0/examples/dashboard/"
-    />
+<!-- Navbar Section -->
+<div class="navbar" id="navbar">
+  <div class="logo">
+      <img src="/images/Chess-Club-Logo.png" alt="Chess Club Logo">
 
-    <!-- Bootstrap core CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
+  </div>
+  <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/inputPlayers">Input Player</a></li>
+      <li><a href="/searchPlayer">Search Player</a></li>
+      <li><a href="/addSection">Add Sections</a></li>
+      <li><a href="/tournament">Tournament</a></li>
+      <li><a href="/scoreReport">Score Report</a></li>
+      <li><a href="/prizeMoney">Prize Money</a></li>
+      <li><a href="/dbfGenerator">DBF Generator</a></li>
+  </ul>
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+  <!-- Arrow Container for Sidebar Toggle -->
+  <div class="arrow-container" onclick="toggleNavbar()" data-tooltip="Close Sidebar">
+      <span class="bi bi-arrow-right"></span>
+  </div>
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
 
-    <!-- Custom styles for this template -->
-    <link href="/dashboard.css" rel="stylesheet" />
-  </head>
-  <body>
-    <header
-      class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
-    >
-      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/index.html"
-        >Murfreesboro Chess Club</a
-      >
-      <button
-        class="navbar-toggler position-absolute d-md-none collapsed"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#sidebarMenu"
-        aria-controls="sidebarMenu"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="navbar-nav"></div>
-    </header>
+  <!-- Footer Section -->
+  <footer class="footer">
+      <div class="container text-center">
+          &copy; 2024 Grandmaster Software. All rights reserved.
+      </div>
+  </footer>
+</div>
 
-    <div class="container-fluid">
-      <div class="row">
-        <nav
-          id="sidebarMenu"
-          class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
-        >
-          <div class="position-sticky pt-3">
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/">
-                  <span data-feather="home"></span>
-                  Home
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/searchPlayer">
-                  <span data-feather="search"></span>
-                  Search Player
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/addSection">
-                  <span data-feather="search"></span>
-                  Add Sections
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/tournament">
-                  <span data-feather="play"></span>
-                  Tournament
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/scoreReport">
-                  <span data-feather="bar-chart-2"></span>
-                  Score Report
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/prizeMoney">
-                  <span data-feather="shopping-cart"></span>
-                  Prize Money
-                </a>
-              </li>
 
-              <li class="nav-item">
-                <a class="nav-link active" href="/dbfGenerator">
-                  <span data-feather="file"></span>
-                  DBF Generator
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
+<!-- Header Section -->
+<header class="header">
+    <h1 class="text-center">Grandmaster Software</h1>
+    <!-- Buttons Container -->
+    <div class="header-buttons">
+        <!-- Events Button -->
+        <a href="https://murfreesborochess.weebly.com/events.html" target="_blank" class="btn btn-secondary btn-events">Events</a>
+        <!-- Donate Button -->
+        <a href="https://www.paypal.com/donate/?hosted_button_id=KNM9VXFUJR42Y" target="_blank" class="btn btn-primary btn-donate">Donate</a>
+    </div>
+</header>
 
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+<!-- Main Content Section -->
+<div class="content">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h2>DBF Generator</h2>
           </div>
@@ -129,9 +66,9 @@
             id="generateDBFs">
             Generate DBF Files
           </button>
-        </main>
+
       </div>
-    </div>
+
 
     <script
       src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
@@ -144,5 +81,14 @@
       crossorigin="anonymous"
     ></script>
     <script src="dbfGenerator.js"></script>
-  </body>
+
+
+<!-- Bootstrap and jQuery Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- NavBar JS file -->
+<script src="/index.js"></script>
+
+</body>
 </html>

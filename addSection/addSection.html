@@ -1,159 +1,65 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-  <meta name="generator" content="Hugo 0.84.0">
-  <title>Chess Tournament</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grandmaster Software</title>
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/index.css" rel="stylesheet">
+    <link href="addSection.css" rel="stylesheet">
+    
+    
 
-  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
-
-  <!-- Bootstrap core CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-
-    /* Style for section containers */
-    .section-container {
-        margin-bottom: 20px;
-        padding: 15px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        background-color: #f8f9fa;
-    }
-
-    /* Style for section headers */
-    .section-container h2 {
-        margin-bottom: 10px;
-        font-size: 1.4em;
-        color: #333;
-    }
-
-    /* Style for player list items */
-    .list-group-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
-        margin-bottom: 12px;
-        background-color: #fff;
-        border: 1px solid #ced4da;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Style for section select dropdown */
-    .section-select {
-        width: 150px;
-        padding: 6px 12px;
-        border-radius: 5px;
-        border: 1px solid #ced4da;
-        background-color: #fff;
-        color: #495057;
-        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    }
-
-    /* Style for section select dropdown on hover */
-    .section-select:hover {
-        border-color: #b8babc;
-    }
-
-    /* Style for section select dropdown when focused */
-    .section-select:focus {
-        border-color: #86b7fe;
-        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-    }
-
-    /* Style for section select dropdown options */
-    .section-select option {
-        padding: 0.5em;
-        background-color: #fff;
-    }
-
-  </style>
-
-  <!-- Custom styles for this template -->
-  <link href="/dashboard.css" rel="stylesheet">
 </head>
 <body>
-  
-<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/index.html">Murfreesboro Chess Club</a>
-<button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-</button>
-<div class="navbar-nav">
+
+<!-- Navbar Section -->
+<div class="navbar" id="navbar">
+    <div class="logo">
+        <img src="/images/Chess-Club-Logo.png" alt="Chess Club Logo">
+
+    </div>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/inputPlayers">Input Player</a></li>
+        <li><a href="/searchPlayer">Search Player</a></li>
+        <li><a href="/addSection">Add Sections</a></li>
+        <li><a href="/tournament">Tournament</a></li>
+        <li><a href="/scoreReport">Score Report</a></li>
+        <li><a href="/prizeMoney">Prize Money</a></li>
+        <li><a href="/dbfGenerator">DBF Generator</a></li>
+    </ul>
+
+    <!-- Arrow Container for Sidebar Toggle -->
+    <div class="arrow-container" onclick="toggleNavbar()" data-tooltip="Close Sidebar">
+        <span class="bi bi-arrow-right"></span>
+    </div>
+
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container text-center">
+            &copy; 2024 Grandmaster Software. All rights reserved.
+        </div>
+    </footer>
 </div>
+
+
+<!-- Header Section -->
+<header class="header">
+    <h1 class="text-center">Grandmaster Software</h1>
+    <!-- Buttons Container -->
+    <div class="header-buttons">
+        <!-- Events Button -->
+        <a href="https://murfreesborochess.weebly.com/events.html" target="_blank" class="btn btn-secondary btn-events">Events</a>
+        <!-- Donate Button -->
+        <a href="https://www.paypal.com/donate/?hosted_button_id=KNM9VXFUJR42Y" target="_blank" class="btn btn-primary btn-donate">Donate</a>
+    </div>
 </header>
 
-<div class="container-fluid">
-<div class="row">
-  <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-    <div class="position-sticky pt-3">
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/">
-            <span data-feather="home"></span>
-            Home
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/searchPlayer">
-            <span data-feather="search"></span>
-            Search Player
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="/addSection">
-            <span data-feather="search"></span>
-            Add Sections
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/tournament">
-            <span data-feather="play"></span>
-            Tournament
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/scoreReport">
-            <span data-feather="bar-chart-2"></span>
-            Score Report
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/prizeMoney">
-            <span data-feather="shopping-cart"></span>
-            Prize Money
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/dbfGenerator">
-            <span data-feather="file"></span>
-            DBF Generator
-          </a>
-        </li>
-
-      </ul>
-    </div>
-  </nav>
-
-  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+<!-- Main Content Section -->
+<div class="content">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">Add Sections</h1>
     </div>
@@ -172,9 +78,7 @@
   
     <button onclick="savePlayerSections()">Save</button>
 
-  </main>
-</div>
-</div>
+  </div>
 
 <script>
   let sections = 1; // Set the start nu of sections to 1
@@ -363,5 +267,13 @@ fetch('/getPlayers')
 
 <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+
+
+<!-- Bootstrap and jQuery Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- NavBar JS file -->
+<script src="/index.js"></script>
 </body>
 </html>
