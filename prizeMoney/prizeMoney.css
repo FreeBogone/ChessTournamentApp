@@ -1,0 +1,15 @@
+.table th, .table td {
+    text-align: center;
+  }
+
+  .gold {
+    background-color: gold;
+  }
+
+  .silver {
+    background-color: silver;
+  }
+
+  .bronze {
+    background-color: rgb(205, 127, 50);
+  }

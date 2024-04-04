@@ -1,0 +1,56 @@
+/* Style for section containers */
+.section-container {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
+
+/* Style for section headers */
+.section-container h2 {
+    margin-bottom: 10px;
+    font-size: 1.4em;
+    color: #333;
+}
+
+/* Style for player list items */
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 12px;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for section select dropdown */
+.section-select {
+    width: 150px;
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    background-color: #fff;
+    color: #495057;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Style for section select dropdown on hover */
+.section-select:hover {
+    border-color: #b8babc;
+}
+
+/* Style for section select dropdown when focused */
+.section-select:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Style for section select dropdown options */
+.section-select option {
+    padding: 0.5em;
+    background-color: #fff;
+}

@@ -1,201 +1,180 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-  <meta name="generator" content="Hugo 0.84.0">
-  <title>Chess Tournament</title>
-  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
-  <!-- Bootstrap core CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grandmaster Software</title>
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/index.css" rel="stylesheet">
+    <style>
+        .container {
+      text-align: center; /* Center align the content */
     }
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-    .container {
-    text-align: center; /* Center align the content */
-  }
-  </style>
-  <!-- Custom styles for this template -->
-  <link href="/dashboard.css" rel="stylesheet">
+    </style>
 </head>
 <body>
 
+<!-- Navbar Section -->
+<div class="navbar" id="navbar">
+  <div class="logo">
+      <img src="/images/Chess-Club-Logo.png" alt="Chess Club Logo">
 
-  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Murfreesboro Chess Club</a>
-    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-nav">
+  </div>
+  <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/inputPlayers">Input Player</a></li>
+      <li><a href="/searchPlayer">Search Player</a></li>
+      <li><a href="/addSection">Add Sections</a></li>
+      <li><a href="/tournament">Tournament</a></li>
+      <li><a href="/scoreReport">Score Report</a></li>
+      <li><a href="/prizeMoney">Prize Money</a></li>
+      <li><a href="/dbfGenerator">DBF Generator</a></li>
+  </ul>
+
+  <!-- Arrow Container for Sidebar Toggle -->
+  <div class="arrow-container" onclick="toggleNavbar()" data-tooltip="Close Sidebar">
+      <span class="bi bi-arrow-right"></span>
+  </div>
+
+
+  <!-- Footer Section -->
+  <footer class="footer">
+      <div class="container text-center">
+          &copy; 2024 Grandmaster Software. All rights reserved.
+      </div>
+  </footer>
+</div>
+
+
+<!-- Header Section -->
+<header class="header">
+    <h1 class="text-center">Grandmaster Software</h1>
+    <!-- Buttons Container -->
+    <div class="header-buttons">
+        <!-- Events Button -->
+        <a href="https://murfreesborochess.weebly.com/events.html" target="_blank" class="btn btn-secondary btn-events">Events</a>
+        <!-- Donate Button -->
+        <a href="https://www.paypal.com/donate/?hosted_button_id=KNM9VXFUJR42Y" target="_blank" class="btn btn-primary btn-donate">Donate</a>
     </div>
-  </header>
-  
-  <div class="container-fluid">
-    <div class="row">
-      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-        <div class="position-sticky pt-3">
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/">
-                <span data-feather="home"></span>
-                Home
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/searchPlayer">
-                <span data-feather="search"></span>
-                Search Player
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/addSection">
-                <span data-feather="search"></span>
-                Add Sections
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/tournament">
-                <span data-feather="play"></span>
-                Tournament
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/scoreReport">
-                <span data-feather="bar-chart-2"></span>
-                Score Report
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/prizeMoney">
-                <span data-feather="shopping-cart"></span>
-                Prize Money
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/dbfGenerator">
-                <span data-feather="file"></span>
-                DBF Generator
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+</header>
 
-<div class="container">
-  <h2>Chess Tournament Scheduler</h2>
-  <label for="numPlayers">Number of Players:</label>
-  <input type="number" id="numPlayers" min="2">
-  <label for="numSections">Number of Sections:</label>
-  <input type="number" id="numSections" min="1">
-  <button onclick="generateSchedule()">Generate Schedule</button>
-  <div id="schedule"></div>
 
-  <script>
-    let players = [];
-    let sections;
-    fetch('/getSamplePlayers')
-    .then(response => response.json())
-    .then(data => {
-        // Set the players array to the received sample players data
-        players = data;
-        // Determine the maximum section number from player data
-        let maxSection = 1; // Default to 1 if no players have a section assigned
-        players.forEach(player => {
-            if (player.section !== '' && parseInt(player.section) > maxSection) {
-                maxSection = parseInt(player.section);
-            }
-        });
-        // Set the initial value of 'sections' to the maximum section number
-        sections = maxSection;
+<div class="content">
+  <div class="container">
+    <h2>Chess Tournament Scheduler</h2>
+    <label for="numPlayers">Number of Players:</label>
+    <input type="number" id="numPlayers" min="2">
+    <label for="numSections">Number of Sections:</label>
+    <input type="number" id="numSections" min="1">
+    <button onclick="generateSchedule()">Generate Schedule</button>
+    <div id="schedule"></div>
 
-        // Now initialize the 'section' property for each player to their respective sections
-        players.forEach(player => {
-            if (player.section === '') { 
-                // If section is empty, set it to 1 by default
-                player.section = 1;
-            } else {
-                // Convert section to number if it's a string
-                player.section = parseInt(player.section);
-            }
-        });
-        console.log(players);
-    })
-    .catch(error => console.error('Error fetching sample player data:', error));
+    <script>
+      let players = [];
+      let sections;
+      fetch('/getSamplePlayers')
+      .then(response => response.json())
+      .then(data => {
+          // Set the players array to the received sample players data
+          players = data;
+          // Determine the maximum section number from player data
+          let maxSection = 1; // Default to 1 if no players have a section assigned
+          players.forEach(player => {
+              if (player.section !== '' && parseInt(player.section) > maxSection) {
+                  maxSection = parseInt(player.section);
+              }
+          });
+          // Set the initial value of 'sections' to the maximum section number
+          sections = maxSection;
+
+          // Now initialize the 'section' property for each player to their respective sections
+          players.forEach(player => {
+              if (player.section === '') { 
+                  // If section is empty, set it to 1 by default
+                  player.section = 1;
+              } else {
+                  // Convert section to number if it's a string
+                  player.section = parseInt(player.section);
+              }
+          });
+          console.log(players);
+      })
+      .catch(error => console.error('Error fetching sample player data:', error));
 
 
 
 
-    function generateSchedule() {
-      const numPlayers = parseInt(document.getElementById('numPlayers').value);
-      const numSections = parseInt(document.getElementById('numSections').value);
-      const scheduleContainer = document.getElementById('schedule');
-      scheduleContainer.innerHTML = '';
+      function generateSchedule() {
+        const numPlayers = parseInt(document.getElementById('numPlayers').value);
+        const numSections = parseInt(document.getElementById('numSections').value);
+        const scheduleContainer = document.getElementById('schedule');
+        scheduleContainer.innerHTML = '';
 
-      if (numPlayers < 2 || numSections < 1) {
-        scheduleContainer.textContent = 'Please enter valid inputs.';
-        return;
-      }
-
-      const sectionSize = Math.floor(numPlayers / numSections);
-      let remainingPlayers = numPlayers % numSections;
-
-      // Add a bye player if the number of players is odd
-      if (numPlayers % 2 === 1) {
-        players.push('Bye');
-      }
-
-      for (let section = 1; section <= numSections; section++) {
-        scheduleContainer.innerHTML += `<h3>Section ${section}:</h3>`;
-        const sectionPlayers = players.slice((section - 1) * sectionSize, section * sectionSize);
-        if (remainingPlayers > 0) {
-          sectionPlayers.push('Bye');
-          remainingPlayers--;
+        if (numPlayers < 2 || numSections < 1) {
+          scheduleContainer.textContent = 'Please enter valid inputs.';
+          return;
         }
 
-        const matchups = generateMatchups(sectionPlayers);
+        const sectionSize = Math.floor(numPlayers / numSections);
+        let remainingPlayers = numPlayers % numSections;
 
-        for (let round = 0; round < sectionPlayers.length - 1; round++) {
-          scheduleContainer.innerHTML += `<h4>Round ${round + 1}:</h4>`;
-          for (let board = 0; board < matchups[round].length; board++) {
-            const [player1, player2] = matchups[round][board];
-            const color1 = round % 2 === 0 ? 'W' : 'B';
-            const color2 = round % 2 === 0 ? 'B' : 'W';
-            scheduleContainer.innerHTML += `Board ${board + 1}: ${player1} (${color1}) vs ${player2} (${color2})<br>`;
+        // Add a bye player if the number of players is odd
+        if (numPlayers % 2 === 1) {
+          players.push('Bye');
+        }
+
+        for (let section = 1; section <= numSections; section++) {
+          scheduleContainer.innerHTML += `<h3>Section ${section}:</h3>`;
+          const sectionPlayers = players.slice((section - 1) * sectionSize, section * sectionSize);
+          if (remainingPlayers > 0) {
+            sectionPlayers.push('Bye');
+            remainingPlayers--;
+          }
+
+          const matchups = generateMatchups(sectionPlayers);
+
+          for (let round = 0; round < sectionPlayers.length - 1; round++) {
+            scheduleContainer.innerHTML += `<h4>Round ${round + 1}:</h4>`;
+            for (let board = 0; board < matchups[round].length; board++) {
+              const [player1, player2] = matchups[round][board];
+              const color1 = round % 2 === 0 ? 'W' : 'B';
+              const color2 = round % 2 === 0 ? 'B' : 'W';
+              scheduleContainer.innerHTML += `Board ${board + 1}: ${player1} (${color1}) vs ${player2} (${color2})<br>`;
+            }
           }
         }
       }
-    }
 
-    function generateMatchups(players) {
-      const matchups = [];
-      const numPlayers = players.length;
+      function generateMatchups(players) {
+        const matchups = [];
+        const numPlayers = players.length;
 
-      for (let i = 0; i < numPlayers - 1; i++) {
-        const roundMatchups = [];
-        for (let j = 0; j < numPlayers / 2; j++) {
-          const player1 = players[j];
-          const player2 = players[numPlayers - 1 - j];
-          roundMatchups.push([player1, player2]);
+        for (let i = 0; i < numPlayers - 1; i++) {
+          const roundMatchups = [];
+          for (let j = 0; j < numPlayers / 2; j++) {
+            const player1 = players[j];
+            const player2 = players[numPlayers - 1 - j];
+            roundMatchups.push([player1, player2]);
+          }
+          matchups.push(roundMatchups);
+          players.splice(1, 0, players.pop());
         }
-        matchups.push(roundMatchups);
-        players.splice(1, 0, players.pop());
-      }
 
-      return matchups;
-    }
-  </script>
+        return matchups;
+      }
+    </script>
+    </div>
   </div>
+
+
+
+<!-- Bootstrap and jQuery Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- NavBar JS file -->
+<script src="/index.js"></script>
+
 </body>
 </html>
