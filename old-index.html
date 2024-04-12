@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Chess Tournament</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+    <!-- Bootstrap core CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="/dashboard.css" rel="stylesheet">
+  </head>
+  <body>
+    
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Murfreesboro Chess Club</a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="navbar-nav">
+  </div>
+
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <a class="btn btn-success"  href="https://murfreesborochess.weebly.com/events.html" target="_blank" class="button">Events</a>
+    <a class="btn btn-success"  href="https://www.paypal.com/donate/?hosted_button_id=KNM9VXFUJR42Y" target="_blank" class="button">Donate</a>
+  </div>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">
+              <span data-feather="home"></span>
+              Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/searchPlayer">
+              <span data-feather="search"></span>
+              Search Player
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/addSection">
+              <span data-feather="search"></span>
+              Add Sections
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/tournament">
+              <span data-feather="play"></span>
+              Tournament
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/scoreReport">
+              <span data-feather="bar-chart-2"></span>
+              Score Report
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/prizeMoney">
+              <span data-feather="shopping-cart"></span>
+              Prize Money
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/dbfGenerator">
+              <span data-feather="file"></span>
+              DBF Generator
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Home</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          
+        </div>
+      </div>
+
+
+      
+
+      <div>
+        <h3><b>Welcome to the Murfreesboro Chess Club</b></h3>
+        <table>
+          <tr>
+            <td>
+        <div>
+      <img src="https://murfreesborochess.weebly.com/uploads/1/9/6/2/19625067/published/mcc-logo-transparent-white.png?1664982092" stlye="width:241;max-width;100%;float:left;"></img>
+      </div>
+      </td>
+      <td style="width:1250px">
+        <div style="text-align:center" >
+        <h4>We are excited to have you, we will get the tournament started shortly</h4>
+        <h6>If you have not registerd yet, please see Norman </h6>
+        <p id="myId"></p>
+        </div>
+      </td>
+
+      </tr>
+      </table>
+      </div>
+
+      <script> 
+        var date = new Date(); 
+        var dd = date.getDate(); 
+        var mm = date.getMonth() + 1; 
+        var yyyy = date.getFullYear(); 
+        var newDate = mm + "/" + dd + "/" +yyyy; 
+        var p = document.getElementById("myId"); 
+        p.innerHTML = newDate; 
+        </script> 
+      
+
+      
+
+
+
+      <div id="generic_price_table">   
+  <section>
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-12">
+                      <!--PRICE HEADING START-->
+                      <div class="price-heading clearfix">
+                          <h4>Links </h4>
+                      </div>
+                      <!--//PRICE HEADING END-->
+                  </div>
+              </div>
+          </div>
+          <div class="container">
+              
+              <!--BLOCK ROW START-->
+              <div class="row">
+                  <div class="col-md-4">
+                  
+                    <!--PRICE CONTENT START-->
+                      <div class="generic_content clearfix">
+                          
+                          <!--HEAD PRICE DETAIL START-->
+                          <div class="generic_head_price clearfix">
+                          
+                              <!--HEAD CONTENT START-->
+                              <div class="generic_head_content clearfix">
+                              
+                                <!--HEAD START-->
+                                  <div class="head_bg"></div>
+                                  <div class="head">
+                                      <span>US Chess Federation</span>
+                                  </div>
+                                  <!--//HEAD END-->
+                                  
+                              </div>
+                              <!--//HEAD CONTENT END-->
+                              
+                              <!--PRICE START-->
+                              <div class="generic_price_tag clearfix">	
+                                  <img src="https://new.uschess.org/themes/custom/skvare_custom_theme/logo.svg">
+                              </div>
+                              <!--//PRICE END-->
+                              
+                          </div>                            
+                          <!--//HEAD PRICE DETAIL END-->
+                          
+                          <!--FEATURE LIST START-->
+                                     
+                          <!--//FEATURE LIST END-->
+                          
+                          <!--BUTTON START-->
+                          <div class="generic_price_btn clearfix">
+                            <a class="" target ="_blank" href="https://new.uschess.org/">Sign up</a>
+                          </div>
+                          <!--//BUTTON END-->
+                          
+                      </div>
+                      <!--//PRICE CONTENT END-->
+                          
+                  </div>
+                  
+                  <div class="col-md-4">
+                  
+                    <!--PRICE CONTENT START-->
+                      <div class="generic_content clearfix">
+                          
+                          <!--HEAD PRICE DETAIL START-->
+                          <div class="generic_head_price clearfix">
+                          
+                              <!--HEAD CONTENT START-->
+                              <div class="generic_head_content clearfix">
+                              
+                                <!--HEAD START-->
+                                  <div class="head_bg"></div>
+                                  <div class="head">
+                                      <span>TN Chess Association</span>
+                                  </div>
+                                  <!--//HEAD END-->
+                                  
+                              </div>
+                              <!--//HEAD CONTENT END-->
+                              
+                              <!--PRICE START-->
+                              <div class="generic_price_tag clearfix">	
+                                <br></br>
+                                  <img src="https://s3.amazonaws.com/ClubExpressClubFiles/164844/graphics/07.23.2021_-_TCA_Logo._Single_Color_1081630523.png" style="width:375px;Height:160px">
+                                  <br></br>
+                                 <br></br>
+                                  
+                              </div>
+                              <!--//PRICE END-->
+                              
+                          </div>                            
+                          <!--//HEAD PRICE DETAIL END-->
+                          
+                          <!--FEATURE LIST START-->
+                          
+                          <!--//FEATURE LIST END-->
+                          
+                          <!--BUTTON START-->
+                          <div class="generic_price_btn clearfix">
+                            <a class="" target ="_blank" href="https://tnchess.us/">Visit</a>
+                          </div>
+                          <!--//BUTTON END-->
+                          
+                      </div>
+                      <!--//PRICE CONTENT END-->
+                          
+                  </div>
+                  <div class="col-md-4">
+                  
+                    <!--PRICE CONTENT START-->
+                      <div class="generic_content clearfix">
+                          
+                          <!--HEAD PRICE DETAIL START-->
+                          <div class="generic_head_price clearfix">
+                          
+                              <!--HEAD CONTENT START-->
+                              <div class="generic_head_content clearfix">
+                              
+                                <!--HEAD START-->
+                                  <div class="head_bg"></div>
+                                  <div class="head">
+                                      <span>Donate</span>
+                                  </div>
+                                  <!--//HEAD END-->
+                                  
+                              </div>
+                              <!--//HEAD CONTENT END-->
+                              
+                              <!--PRICE START-->
+                              <div class="generic_price_tag clearfix">	
+                                  <img src="https://i0.wp.com/mealsonwheelsplus.org/wp-content/uploads/2021/01/SmallIcon-Donate.png?fit=241%2C256&ssl=1" style="height:244px">
+                                  <br></br>
+
+                              </div>
+                              <!--//PRICE END-->
+                              
+                          </div>                            
+                          
+                          
+                          <!--BUTTON START-->
+                          <div class="generic_price_btn clearfix">
+                            <a class="" target ="_blank" href="https://www.paypal.com/donate/?hosted_button_id=KNM9VXFUJR42Y">Donate</a>
+                          </div>
+                          <!--//BUTTON END-->
+                          
+                      </div>
+                      
+                          
+                  </div>
+              </div>	
+              <!--//BLOCK ROW END-->
+              
+          </div>
+      </section>             
+    
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+  </body>
+</html>
